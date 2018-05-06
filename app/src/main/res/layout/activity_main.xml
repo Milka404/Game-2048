@@ -9,6 +9,7 @@
     android:orientation="vertical"
     android:paddingRight="16dp"
     android:layout_weight="7"
+    android:background="#F9FBE7"
 
     tools:context="com.example.milka404.game_2048.MainActivity">
 
@@ -17,32 +18,43 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal"
+        android:layout_marginTop="7dp"
+
         >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="2048!"
-            android:textSize="45dp"
+            android:textSize="35dp"
             android:layout_weight="2"
+
+
             />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="2" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="#bbada0"
             android:layout_weight="2"
-            android:text=" "/>
+            android:layout_marginRight="5dp"
+            android:text="ОЧКИ"
+            android:textSize="15dp"
+            android:textColor="#D7CCC8"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:background="#bbada0"
             android:layout_weight="2"
-            android:text=" "/>
+            android:text="Рекорд "
+            android:textSize="15dp"
+            android:textColor="#D7CCC8"/>
 
     </LinearLayout>
 
@@ -56,125 +68,205 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:text="Join the numbers and get to the"
             android:textSize="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:text="2048 title"
             android:fontFamily="cursive"
             android:textSize="18dp"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restar"
+            android:textColor="#fe8205"
+            android:textSize="25dp"
+            android:background="#F9FBE7"
+            android:textAlignment="viewStart"
+            android:layout_weight="1"
+            android:layout_gravity="start" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Undo"
+            android:textSize="25dp"
+            android:textColor="#fe8205"
+            android:background="#F9FBE7"/>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#bbada0"
+        android:layout_marginBottom="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
             android:layout_weight="1">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
+
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
             android:layout_weight="1">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
+
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
             android:layout_weight="1">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
+
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
             android:layout_weight="1">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"
+                android:layout_marginRight="8dp"/>
+
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:background="@color/btnColor"/>
 
         </LinearLayout>
 
