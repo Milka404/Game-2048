@@ -31,12 +31,35 @@ public class  MainActivity extends AppCompatActivity {
         ButtonArray[3][3] = (Button) findViewById(R.id.Button33);
     }
 
+    static int create_new_cell(Button[][] ButtonArray) {
+
+        int i, j;
+        Random rnd = new Random(System.currentTimeMillis());
+
+        while (true)
+        {
+            i = rnd.nextInt(4 );
+            j = rnd.nextInt(4 );
+
+            if (ButtonArray[i][j].getText() != "")
+            {
+                continue;
+            }
+
+            ButtonArray[i][j].setText("2");
+            break;
+        }
+
+        return 0;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayInit(ButtonArray);
+        create_new_cell(ButtonArray);
     }
 }
 
