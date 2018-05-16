@@ -2,7 +2,11 @@ package com.example.milka404.game_2048;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -10,6 +14,11 @@ import java.util.Random;
 public class  MainActivity extends AppCompatActivity {
 
     Button[][] ButtonArray = new Button[4][4];
+
+    private LinearLayout myLayout = null;
+
+    private float x1, x2;
+    private float y1, y2;
 
     private void ArrayInit(Button[][] ButtonArray) {
 
@@ -29,6 +38,9 @@ public class  MainActivity extends AppCompatActivity {
         ButtonArray[3][1] = (Button) findViewById(R.id.Button31);
         ButtonArray[3][2] = (Button) findViewById(R.id.Button32);
         ButtonArray[3][3] = (Button) findViewById(R.id.Button33);
+
+        create_new_cell(ButtonArray);
+        create_new_cell(ButtonArray);
     }
 
     static int create_new_cell(Button[][] ButtonArray) {
@@ -59,7 +71,28 @@ public class  MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayInit(ButtonArray);
-        create_new_cell(ButtonArray);
+        myLayout = (LinearLayout) findViewById(R.id.myLayout);
+
+        myLayout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN: // нажатие
+                        x1 = event.getX();
+                        y1 = event.getY();
+                        break;
+                    case MotionEvent.ACTION_UP: // отпускание
+                        x2 = event.getX();
+                        y2 = event.getY();
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                        Toast.makeText(getApplicationContext(), "Меня потрогалиО_О", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
     }
 }
 
