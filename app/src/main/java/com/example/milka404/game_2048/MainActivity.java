@@ -65,6 +65,23 @@ public class  MainActivity extends AppCompatActivity {
         return 0;
     }
 
+    private void moving_cells() {
+
+        int dir;
+
+        if (Math.abs(x1 - x2) > Math.abs(y1 - y2)) {
+            if (x2 - x1 > 0)
+                dir = 1;
+            else dir = 2;
+        }
+        else {
+            if (y2 - y1 > 0)
+                dir = 3;
+            else dir = 4;
+        }
+        
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
