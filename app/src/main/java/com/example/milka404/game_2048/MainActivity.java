@@ -10,10 +10,14 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+import static java.lang.Integer.parseInt;
+
 
 public class  MainActivity extends AppCompatActivity {
 
     Button[][] ButtonArray = new Button[4][4];
+
+    boolean isMoveRight = false, isMoveLeft = false, isMoveUp = false, isMoveDown = false;
 
     private LinearLayout myLayout = null;
 
@@ -39,11 +43,15 @@ public class  MainActivity extends AppCompatActivity {
         ButtonArray[3][2] = (Button) findViewById(R.id.Button32);
         ButtonArray[3][3] = (Button) findViewById(R.id.Button33);
 
-        create_new_cell(ButtonArray);
-        create_new_cell(ButtonArray);
+        for (int i = 0; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                ButtonArray[i][j].setText(" ");
+
+        create_new_cell();
+        create_new_cell();
     }
 
-    static int create_new_cell(Button[][] ButtonArray) {
+    int create_new_cell() {
 
         int i, j;
         Random rnd = new Random(System.currentTimeMillis());
@@ -53,7 +61,7 @@ public class  MainActivity extends AppCompatActivity {
             i = rnd.nextInt(4 );
             j = rnd.nextInt(4 );
 
-            if (ButtonArray[i][j].getText() != "")
+            if (ButtonArray[i][j].getText() != " ")
             {
                 continue;
             }
@@ -67,19 +75,68 @@ public class  MainActivity extends AppCompatActivity {
 
     private void moving_cells() {
 
-        int dir;
+        int dir, flag;
 
         if (Math.abs(x1 - x2) > Math.abs(y1 - y2)) {
             if (x2 - x1 > 0)
-                dir = 1;
-            else dir = 2;
+                dir = 1; //right
+            else dir = 2; //left
         }
         else {
             if (y2 - y1 > 0)
                 dir = 3;
             else dir = 4;
         }
-        
+        flag = 0;
+        switch (dir) {
+            case 1:
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 2; j >= 0; j--)
+                    {
+                        if (ButtonArray[i][j].getText().toString() == " ")
+                        {
+                            //Toast.makeText(getApplicationContext(), "ignore [" + i + "][" + j + "]", Toast.LENGTH_SHORT).show();
+                            continue;
+                        }
+                        for (int z = j; z < 3; z++) {
+                            if (ButtonArray[i][z].getText().toString() != ButtonArray[i][z + 1].getText().toString())
+                            {
+                                ButtonArray[i][z + 1].setText(ButtonArray[i][z].getText().toString());
+                                ButtonArray[i][z].setText(" ");
+                                flag = 1;
+
+                                isMoveRight = true;
+
+                                isMoveDown = false;
+                                isMoveUp = false;
+                                isMoveLeft = false;
+                            }
+                            else
+                            {
+                                ButtonArray[i][z + 1].setText(String.valueOf(parseInt(ButtonArray[i][z + 1].getText().toString()) * 2));
+                                ButtonArray[i][z].setText(" ");
+                                flag = 1;
+
+                                isMoveRight = true;
+
+                                isMoveDown = false;
+                                isMoveUp = false;
+                                isMoveLeft = false;
+                                break;
+                            }
+
+                        }
+                    }
+                }
+                if (flag == 1 && isMoveRight)
+                    create_new_cell();
+                break;
+            case 2: break;
+            case 3: break;
+            case 4: break;
+        }
+
     }
 
 
@@ -102,6 +159,8 @@ public class  MainActivity extends AppCompatActivity {
                     case MotionEvent.ACTION_UP: // отпускание
                         x2 = event.getX();
                         y2 = event.getY();
+                        moving_cells();
+                       // create_new_cell(ButtonArray);
                         break;
                     case MotionEvent.ACTION_CANCEL:
                         Toast.makeText(getApplicationContext(), "Меня потрогалиО_О", Toast.LENGTH_SHORT).show();
@@ -110,6 +169,7 @@ public class  MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
     }
 }
 
