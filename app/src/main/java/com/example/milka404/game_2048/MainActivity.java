@@ -84,8 +84,8 @@ public class  MainActivity extends AppCompatActivity {
         }
         else {
             if (y2 - y1 > 0)
-                dir = 3;
-            else dir = 4;
+                dir = 3; //down
+            else dir = 4; //up
         }
         flag = 0;
         switch (dir) {
@@ -102,6 +102,8 @@ public class  MainActivity extends AppCompatActivity {
                         for (int z = j; z < 3; z++) {
                             if (ButtonArray[i][z].getText().toString() != ButtonArray[i][z + 1].getText().toString())
                             {
+                                if (ButtonArray[i][z + 1].getText().toString() != " ")
+                                    continue;
                                 ButtonArray[i][z + 1].setText(ButtonArray[i][z].getText().toString());
                                 ButtonArray[i][z].setText(" ");
                                 flag = 1;
@@ -132,9 +134,141 @@ public class  MainActivity extends AppCompatActivity {
                 if (flag == 1 && isMoveRight)
                     create_new_cell();
                 break;
-            case 2: break;
-            case 3: break;
-            case 4: break;
+            case 2:
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 1; j <= 3; j++)
+                    {
+                        if (ButtonArray[i][j].getText().toString() == " ")
+                        {
+                            //Toast.makeText(getApplicationContext(), "ignore [" + i + "][" + j + "]", Toast.LENGTH_SHORT).show();
+                            continue;
+                        }
+                        for (int z = j; z > 0; z--) {
+                            if (ButtonArray[i][z].getText().toString() != ButtonArray[i][z - 1].getText().toString())
+                            {
+                                if (ButtonArray[i][z - 1].getText().toString() != " ")
+                                    continue;
+                                ButtonArray[i][z - 1].setText(ButtonArray[i][z].getText().toString());
+                                ButtonArray[i][z].setText(" ");
+                                flag = 1;
+
+                                isMoveLeft = true;
+
+                                isMoveDown = false;
+                                isMoveUp = false;
+                                isMoveRight = false;
+                            }
+                            else
+                            {
+                                ButtonArray[i][z - 1].setText(String.valueOf(parseInt(ButtonArray[i][z - 1].getText().toString()) * 2));
+                                ButtonArray[i][z].setText(" ");
+                                flag = 1;
+
+                                isMoveLeft = true;
+
+                                isMoveDown = false;
+                                isMoveUp = false;
+                                isMoveRight = false;
+                                break;
+                            }
+
+                        }
+                    }
+                }
+                    if (flag == 1 && isMoveLeft)
+                        create_new_cell();
+                break;
+            case 3:
+                for (int j = 0; j < 4; j++)
+                {
+                    for (int i = 2; i >= 0; i--)
+                    {
+                        if (ButtonArray[i][j].getText().toString() == " ")
+                        {
+                            //Toast.makeText(getApplicationContext(), "ignore [" + i + "][" + j + "]", Toast.LENGTH_SHORT).show();
+                            continue;
+                        }
+                        for (int z = i; z < 3; z++) {
+                            if (ButtonArray[z][j].getText().toString() != ButtonArray[z + 1][j].getText().toString())
+                            {
+                                if (ButtonArray[z + 1][j].getText().toString() != " ")
+                                    continue;
+                                ButtonArray[z + 1][j].setText(ButtonArray[z][j].getText().toString());
+                                ButtonArray[z][j].setText(" ");
+                                flag = 1;
+
+                                isMoveDown = true;
+
+                                isMoveRight = false;
+                                isMoveUp = false;
+                                isMoveLeft = false;
+                            }
+                            else
+                            {
+                                ButtonArray[z + 1][j].setText(String.valueOf(parseInt(ButtonArray[z + 1][j].getText().toString()) * 2));
+                                ButtonArray[z][j].setText(" ");
+                                flag = 1;
+
+                                isMoveDown = true;
+
+                                isMoveRight = false;
+                                isMoveUp = false;
+                                isMoveLeft = false;
+                                break;
+                            }
+
+                        }
+                    }
+                }
+                if (flag == 1 && isMoveDown)
+                    create_new_cell();
+                break;
+            case 4:
+                for (int j = 0; j < 4; j++)
+                {
+                    for (int i = 1; i <= 3; i++)
+                    {
+                        if (ButtonArray[i][j].getText().toString() == " ")
+                        {
+                            //Toast.makeText(getApplicationContext(), "ignore [" + i + "][" + j + "]", Toast.LENGTH_SHORT).show();
+                            continue;
+                        }
+                        for (int z = i; z > 0; z--) {
+                            if (ButtonArray[z][j].getText().toString() != ButtonArray[z - 1][j].getText().toString())
+                            {
+                                if (ButtonArray[z - 1][j].getText().toString() != " ")
+                                    continue;
+                                ButtonArray[z - 1][j].setText(ButtonArray[z][j].getText().toString());
+                                ButtonArray[z][j].setText(" ");
+                                flag = 1;
+
+                                isMoveUp = true;
+
+                                isMoveRight = false;
+                                isMoveDown = false;
+                                isMoveLeft = false;
+                            }
+                            else
+                            {
+                                ButtonArray[z - 1][j].setText(String.valueOf(parseInt(ButtonArray[z - 1][j].getText().toString()) * 2));
+                                ButtonArray[z][j].setText(" ");
+                                flag = 1;
+
+                                isMoveUp = true;
+
+                                isMoveRight = false;
+                                isMoveDown = false;
+                                isMoveLeft = false;
+                                break;
+                            }
+
+                        }
+                    }
+                }
+                if (flag == 1 && isMoveUp)
+                    create_new_cell();
+                break;
         }
 
     }
