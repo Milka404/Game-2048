@@ -90,6 +90,7 @@
 
         <Button
             android:id="@+id/Restart"
+            android:onClick="Restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"

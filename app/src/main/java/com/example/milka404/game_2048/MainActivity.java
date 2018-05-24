@@ -336,6 +336,16 @@ public class  MainActivity extends AppCompatActivity {
             create_new_cell();
     }
 
+    public void Restart(View view) {
+        for (int i = 0; i <= 3; i++)
+            for (int j = 0; j <= 3; j++) {
+                ButtonArray[i][j].setText(" ");
+                color_change(i, j);
+            }
+        create_new_cell();
+        create_new_cell();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
