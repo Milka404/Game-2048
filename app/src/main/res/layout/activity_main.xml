@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:text="2048!"
             android:textSize="35dp"
+            android:textColor="#2cda32"
             android:layout_weight="2" />
 
         <TextView
@@ -38,22 +39,22 @@
             android:id="@+id/Score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#bbada0"
+            android:background="#dc8839"
             android:layout_weight="2"
             android:layout_marginRight="5dp"
             android:text="ОЧКИ"
-            android:textSize="15dp"
-            android:textColor="#D7CCC8"/>
+            android:textSize="17dp"
+            android:textColor="#0d08af"/>
 
         <Button
             android:id="@+id/Record"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#bbada0"
+            android:background="#dc8839"
             android:layout_weight="2"
             android:text="Рекорд "
-            android:textSize="15dp"
-            android:textColor="#D7CCC8"/>
+            android:textSize="17dp"
+            android:textColor="#0d08af"/>
 
     </LinearLayout>
 
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:layout_marginBottom="4dp"
-            android:text="Join the numbers and get to the"
+            android:text="Join the numbers and get to the "
             android:textSize="15dp"/>
 
         <TextView
