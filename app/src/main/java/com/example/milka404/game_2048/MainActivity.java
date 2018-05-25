@@ -15,11 +15,13 @@ import static java.lang.Integer.parseInt;
 public class  MainActivity extends AppCompatActivity {
 
     Button[][] ButtonArray = new Button[4][4];
-    int color = 0xffcdc1b5;
+    int color = 0xffcdc1b5, score = 0, record = 0;
 
     boolean isMoveRight = false, isMoveLeft = false, isMoveUp = false, isMoveDown = false;
 
     private Button myLayout;
+    private Button Record;
+    private Button Score;
 
     private float x1, x2;
     private float y1, y2;
@@ -49,6 +51,12 @@ public class  MainActivity extends AppCompatActivity {
 
         create_new_cell();
         create_new_cell();
+    }
+
+    void record() {
+        if (score > record)
+            record = score;
+        Record.setText(String.valueOf(record));
     }
 
     int create_new_cell() {
@@ -180,10 +188,14 @@ public class  MainActivity extends AppCompatActivity {
                         isMoveLeft = false;
                     }
                     else {
+                        score = score + parseInt(ButtonArray[i][z + 1].getText().toString());
                         ButtonArray[i][z + 1].setText(String.valueOf(parseInt(ButtonArray[i][z + 1].getText().toString()) * 2));
+                        Score.setText(String.valueOf(score));
+                        //Toast.makeText(getApplicationContext(), "score = " + score, Toast.LENGTH_SHORT).show();
                         color_change(i, z + 1);
                         ButtonArray[i][z].setText(" ");
                         color_change(i, z);
+                        record();
                         flag = 1;
 
                         isMoveRight = true;
@@ -225,10 +237,13 @@ public class  MainActivity extends AppCompatActivity {
                         isMoveRight = false;
                     }
                     else {
+                        score = score + parseInt(ButtonArray[i][z - 1].getText().toString());
                         ButtonArray[i][z - 1].setText(String.valueOf(parseInt(ButtonArray[i][z - 1].getText().toString()) * 2));
+                        Score.setText(String.valueOf(score));
                         color_change(i, z - 1);
                         ButtonArray[i][z].setText(" ");
                         color_change(i, z);
+                        record();
                         flag = 1;
 
                         isMoveLeft = true;
@@ -270,10 +285,13 @@ public class  MainActivity extends AppCompatActivity {
                         isMoveLeft = false;
                     }
                     else {
+                        score = score + parseInt(ButtonArray[z + 1][j].getText().toString());
                         ButtonArray[z + 1][j].setText(String.valueOf(parseInt(ButtonArray[z + 1][j].getText().toString()) * 2));
+                        Score.setText(String.valueOf(score));
                         color_change(z + 1, j);
                         ButtonArray[z][j].setText(" ");
                         color_change(z, j);
+                        record();
                         flag = 1;
 
                         isMoveDown = true;
@@ -315,10 +333,13 @@ public class  MainActivity extends AppCompatActivity {
                         isMoveLeft = false;
                     }
                     else {
+                        score = score + parseInt(ButtonArray[z - 1][j].getText().toString());
                         ButtonArray[z - 1][j].setText(String.valueOf(parseInt(ButtonArray[z - 1][j].getText().toString()) * 2));
+                        Score.setText(String.valueOf(score));
                         color_change(z - 1, j);
                         ButtonArray[z][j].setText(" ");
                         color_change(z, j);
+                        record();
                         flag = 1;
 
                         isMoveUp = true;
@@ -342,6 +363,7 @@ public class  MainActivity extends AppCompatActivity {
                 ButtonArray[i][j].setText(" ");
                 color_change(i, j);
             }
+        score = 0;
         create_new_cell();
         create_new_cell();
     }
@@ -353,6 +375,8 @@ public class  MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ArrayInit(ButtonArray);
         myLayout = findViewById(R.id.myLayout);
+        Score = findViewById(R.id.Score);
+        Record = findViewById(R.id.Record);
 
         myLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
