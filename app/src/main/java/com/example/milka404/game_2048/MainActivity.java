@@ -96,57 +96,57 @@ public class  MainActivity extends AppCompatActivity {
     int color_change(int i, int j) {
         if (ButtonArray[i][j].getText().toString().equals(" ")) {
             ButtonArray[i][j].setBackgroundColor(color);
-            return 0;
+            return 0xffcdc1b5;
         }
         if (ButtonArray[i][j].getText().toString().equals("2")) {
             ButtonArray[i][j].setBackgroundColor(0xff72ad92);
-            return 2;
+            return 0xff72ad92;
         }
         if (ButtonArray[i][j].getText().toString().equals("4")) {
             ButtonArray[i][j].setBackgroundColor(0xffa4a54a);
-            return 4;
+            return 0xffa4a54a;
         }
         if (ButtonArray[i][j].getText().toString().equals("8")) {
             ButtonArray[i][j].setBackgroundColor(0xff608bd1);
-            return 8;
+            return 0xff608bd1;
         }
         if (ButtonArray[i][j].getText().toString().equals("16")) {
             ButtonArray[i][j].setBackgroundColor(0xffa52940);
-            return 16;
+            return 0xffa52940;
         }
         if (ButtonArray[i][j].getText().toString().equals("32")) {
             ButtonArray[i][j].setBackgroundColor(0xff96c95a);
-            return 32;
+            return 0xff96c95a;
         }
         if (ButtonArray[i][j].getText().toString().equals("64")) {
             ButtonArray[i][j].setBackgroundColor(0xff51e269);
-            return 64;
+            return 0xff51e269;
         }
         if (ButtonArray[i][j].getText().toString().equals("128")) {
             ButtonArray[i][j].setBackgroundColor(0xff7a50ce);
-            return 128;
+            return 0xff7a50ce;
         }
         if (ButtonArray[i][j].getText().toString().equals("256")) {
             ButtonArray[i][j].setBackgroundColor(0xff351d66);
-            return 256;
+            return 0xff351d66;
         }
         if (ButtonArray[i][j].getText().toString().equals("512")) {
             ButtonArray[i][j].setBackgroundColor(0xffc148e2);
-            return 512;
+            return 0xffc148e2;
         }
         if (ButtonArray[i][j].getText().toString().equals("1024")) {
             ButtonArray[i][j].setBackgroundColor(0xff00ff87);
-            return 1024;
+            return 0xff00ff87;
         }
         if (ButtonArray[i][j].getText().toString().equals("2048")) {
             ButtonArray[i][j].setBackgroundColor(0xff00edff);
             win( "Вы выиграли!", (float) 0.5);
-            return 2048;
+            return 0xff00edff;
         }
         return -1;
     }
 
-    private void choose_moving_cells() {
+    private int choose_moving_cells() {
 
         int dir, flag;
 
@@ -164,18 +164,18 @@ public class  MainActivity extends AppCompatActivity {
         switch (dir) {
             case 1:
                 moving_right(flag);
-                break;
+                return 1;
             case 2:
                 moving_left(flag);
-                break;
+                return 2;
             case 3:
                 moving_down(flag);
-                break;
+                return 3;
             case 4:
                 moving_up(flag);
-                break;
+                return 4;
         }
-
+        return -1;
     }
 
     void moving_right(int flag) {
