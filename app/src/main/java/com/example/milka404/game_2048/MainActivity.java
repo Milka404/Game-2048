@@ -1,5 +1,6 @@
 package com.example.milka404.game_2048;
 
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -80,6 +81,12 @@ public class  MainActivity extends AppCompatActivity {
         return 0;
     }
 
+    void win(CharSequence text, float alpha) {
+        myLayout.setAlpha(alpha);
+        myLayout.setText(text);
+        myLayout.setTextSize(45);
+    }
+
     int color_change(int i, int j) {
         if (ButtonArray[i][j].getText().toString().equals(" ")) {
             ButtonArray[i][j].setBackgroundColor(color);
@@ -127,6 +134,7 @@ public class  MainActivity extends AppCompatActivity {
         }
         if (ButtonArray[i][j].getText().toString().equals("2048")) {
             ButtonArray[i][j].setBackgroundColor(0xff00edff);
+            win( "Вы выиграли!", (float) 0.5);
             return 2048;
         }
         return -1;
@@ -364,6 +372,8 @@ public class  MainActivity extends AppCompatActivity {
                 color_change(i, j);
             }
         score = 0;
+        Score.setText(String.valueOf(score));
+        win(" ", (float) 0.0);
         create_new_cell();
         create_new_cell();
     }
@@ -371,6 +381,7 @@ public class  MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ArrayInit(ButtonArray);

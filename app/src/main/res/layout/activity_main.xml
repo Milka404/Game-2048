@@ -294,7 +294,8 @@
         <Button
             android:id="@+id/myLayout"
             android:alpha="0.0"
-            android:background="#ffff00"
+            android:background="#32CD32"
+            android:text=" "
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
