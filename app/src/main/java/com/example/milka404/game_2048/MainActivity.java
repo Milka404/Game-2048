@@ -81,51 +81,51 @@ public class  MainActivity extends AppCompatActivity {
     }
 
     int color_change(int i, int j) {
-        if (ButtonArray[i][j].getText() == " ") {
+        if (ButtonArray[i][j].getText().toString().equals(" ")) {
             ButtonArray[i][j].setBackgroundColor(color);
             return 0;
         }
-        if (ButtonArray[i][j].getText() == "2") {
+        if (ButtonArray[i][j].getText().toString().equals("2")) {
             ButtonArray[i][j].setBackgroundColor(0xff72ad92);
             return 2;
         }
-        if (ButtonArray[i][j].getText() == "4") {
+        if (ButtonArray[i][j].getText().toString().equals("4")) {
             ButtonArray[i][j].setBackgroundColor(0xff9b8957);
             return 4;
         }
-        if (ButtonArray[i][j].getText() == "8") {
+        if (ButtonArray[i][j].getText().toString().equals("8")) {
             ButtonArray[i][j].setBackgroundColor(0xff4c3e19);
             return 8;
         }
-        if (parseInt(ButtonArray[i][j].getText().toString()) == 16) {
+        if (ButtonArray[i][j].getText().toString().equals("16")) {
             ButtonArray[i][j].setBackgroundColor(0xff843b3b);
             return 16;
         }
-        if (parseInt(ButtonArray[i][j].getText().toString()) == 32) {
+        if (ButtonArray[i][j].getText().toString().equals("32")) {
             ButtonArray[i][j].setBackgroundColor(0xff96c95a);
             return 32;
         }
-        if (parseInt(ButtonArray[i][j].getText().toString()) == 64) {
+        if (ButtonArray[i][j].getText().toString().equals("64")) {
             ButtonArray[i][j].setBackgroundColor(0xff51e269);
             return 64;
         }
-        if (parseInt(ButtonArray[i][j].getText().toString()) == 128) {
+        if (ButtonArray[i][j].getText().toString().equals("128")) {
             ButtonArray[i][j].setBackgroundColor(0xff7a50ce);
             return 128;
         }
-        if (parseInt(ButtonArray[i][j].getText().toString()) == 256) {
+        if (ButtonArray[i][j].getText().toString().equals("256")) {
             ButtonArray[i][j].setBackgroundColor(0xff351d66);
             return 256;
         }
-        if (parseInt(ButtonArray[i][j].getText().toString()) == 512) {
+        if (ButtonArray[i][j].getText().toString().equals("512")) {
             ButtonArray[i][j].setBackgroundColor(0xffc148e2);
             return 512;
         }
-        if (parseInt(ButtonArray[i][j].getText().toString()) == 1024) {
+        if (ButtonArray[i][j].getText().toString().equals("1024")) {
             ButtonArray[i][j].setBackgroundColor(0xffc64182);
             return 1024;
         }
-        if (parseInt(ButtonArray[i][j].getText().toString()) == 2048) {
+        if (ButtonArray[i][j].getText().toString().equals("2048")) {
             ButtonArray[i][j].setBackgroundColor(0xff00edff);
             return 2048;
         }
