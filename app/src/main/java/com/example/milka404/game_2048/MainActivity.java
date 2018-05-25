@@ -159,13 +159,13 @@ public class  MainActivity extends AppCompatActivity {
     void moving_right(int flag) {
         for (int i = 0; i < 4; i++) {
             for (int j = 2; j >= 0; j--) {
-                if (ButtonArray[i][j].getText().toString() == " ") {
+                if (ButtonArray[i][j].getText().toString().equals(" ")) {
                     //Toast.makeText(getApplicationContext(), "ignore [" + i + "][" + j + "]", Toast.LENGTH_SHORT).show();
                     continue;
                 }
                 for (int z = j; z < 3; z++) {
-                    if (ButtonArray[i][z].getText().toString() != ButtonArray[i][z + 1].getText().toString()) {
-                        if (ButtonArray[i][z + 1].getText().toString() != " ")
+                    if (!ButtonArray[i][z].getText().toString().equals(ButtonArray[i][z + 1].getText().toString())) {
+                        if (!ButtonArray[i][z + 1].getText().toString().equals(" "))
                             continue;
                         ButtonArray[i][z + 1].setText(ButtonArray[i][z].getText().toString());
                         color_change(i, z + 1);
@@ -204,13 +204,13 @@ public class  MainActivity extends AppCompatActivity {
     void moving_left(int flag) {
         for (int i = 0; i < 4; i++) {
             for (int j = 1; j <= 3; j++) {
-                if (ButtonArray[i][j].getText().toString() == " ") {
+                if (ButtonArray[i][j].getText().toString().equals(" ")) {
                     //Toast.makeText(getApplicationContext(), "ignore [" + i + "][" + j + "]", Toast.LENGTH_SHORT).show();
                     continue;
                 }
                 for (int z = j; z > 0; z--) {
-                    if (ButtonArray[i][z].getText().toString() != ButtonArray[i][z - 1].getText().toString()) {
-                        if (ButtonArray[i][z - 1].getText().toString() != " ")
+                    if (!ButtonArray[i][z].getText().toString().equals(ButtonArray[i][z - 1].getText().toString())) {
+                        if (!ButtonArray[i][z - 1].getText().toString().equals(" "))
                             continue;
                         ButtonArray[i][z - 1].setText(ButtonArray[i][z].getText().toString());
                         color_change(i, z - 1);
@@ -249,13 +249,13 @@ public class  MainActivity extends AppCompatActivity {
     void moving_down(int flag) {
         for (int j = 0; j < 4; j++) {
             for (int i = 2; i >= 0; i--) {
-                if (ButtonArray[i][j].getText().toString() == " ") {
+                if (ButtonArray[i][j].getText().toString().equals(" ")) {
                     //Toast.makeText(getApplicationContext(), "ignore [" + i + "][" + j + "]", Toast.LENGTH_SHORT).show();
                     continue;
                 }
                 for (int z = i; z < 3; z++) {
-                    if (ButtonArray[z][j].getText().toString() != ButtonArray[z + 1][j].getText().toString()) {
-                        if (ButtonArray[z + 1][j].getText().toString() != " ")
+                    if (!ButtonArray[z][j].getText().toString().equals(ButtonArray[z + 1][j].getText().toString())) {
+                        if (!ButtonArray[z + 1][j].getText().toString().equals(" "))
                             continue;
                         ButtonArray[z + 1][j].setText(ButtonArray[z][j].getText().toString());
                         color_change(z + 1, j);
@@ -294,13 +294,13 @@ public class  MainActivity extends AppCompatActivity {
     void moving_up(int flag) {
         for (int j = 0; j < 4; j++) {
             for (int i = 1; i <= 3; i++) {
-                if (ButtonArray[i][j].getText().toString() == " ") {
+                if (ButtonArray[i][j].getText().toString().equals(" ")) {
                     //Toast.makeText(getApplicationContext(), "ignore [" + i + "][" + j + "]", Toast.LENGTH_SHORT).show();
                     continue;
                 }
                 for (int z = i; z > 0; z--) {
-                    if (ButtonArray[z][j].getText().toString() != ButtonArray[z - 1][j].getText().toString()) {
-                        if (ButtonArray[z - 1][j].getText().toString() != " ")
+                    if (!ButtonArray[z][j].getText().toString().equals(ButtonArray[z - 1][j].getText().toString())) {
+                        if (!ButtonArray[z - 1][j].getText().toString().equals(" "))
                             continue;
                         ButtonArray[z - 1][j].setText(ButtonArray[z][j].getText().toString());
                         color_change(z - 1, j);
