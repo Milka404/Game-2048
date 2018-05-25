@@ -1,6 +1,8 @@
 package com.example.milka404.game_2048;
 
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -15,8 +17,12 @@ import static java.lang.Integer.parseInt;
 
 public class  MainActivity extends AppCompatActivity {
 
+    SharedPreferences settings;// = getSharedPreferences("Preferences", MODE_PRIVATE);
+
     Button[][] ButtonArray = new Button[4][4];
     int color = 0xffcdc1b5, score = 0, record = 0;
+
+    String rec = "Record", scr = "Score", set = "Set";
 
     boolean isMoveRight = false, isMoveLeft = false, isMoveUp = false, isMoveDown = false;
 
@@ -97,15 +103,15 @@ public class  MainActivity extends AppCompatActivity {
             return 2;
         }
         if (ButtonArray[i][j].getText().toString().equals("4")) {
-            ButtonArray[i][j].setBackgroundColor(0xff9b8957);
+            ButtonArray[i][j].setBackgroundColor(0xffa4a54a);
             return 4;
         }
         if (ButtonArray[i][j].getText().toString().equals("8")) {
-            ButtonArray[i][j].setBackgroundColor(0xff4c3e19);
+            ButtonArray[i][j].setBackgroundColor(0xff608bd1);
             return 8;
         }
         if (ButtonArray[i][j].getText().toString().equals("16")) {
-            ButtonArray[i][j].setBackgroundColor(0xff843b3b);
+            ButtonArray[i][j].setBackgroundColor(0xffa52940);
             return 16;
         }
         if (ButtonArray[i][j].getText().toString().equals("32")) {
@@ -129,7 +135,7 @@ public class  MainActivity extends AppCompatActivity {
             return 512;
         }
         if (ButtonArray[i][j].getText().toString().equals("1024")) {
-            ButtonArray[i][j].setBackgroundColor(0xffc64182);
+            ButtonArray[i][j].setBackgroundColor(0xff00ff87);
             return 1024;
         }
         if (ButtonArray[i][j].getText().toString().equals("2048")) {
@@ -382,13 +388,34 @@ public class  MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);//-----
         setContentView(R.layout.activity_main);
+        settings = getSharedPreferences("Preferences", MODE_PRIVATE);
         ArrayInit(ButtonArray);
         myLayout = findViewById(R.id.myLayout);
         Score = findViewById(R.id.Score);
         Record = findViewById(R.id.Record);
+        //-----------------------------
+        record = settings.getInt(rec,record);
+        score = settings.getInt(scr ,score);
+        Record.setText(String.valueOf(record));
+        Score.setText(String.valueOf(score));
 
+        String str = "";
+        str = settings.getString(set, str);
+
+        int k = 0;
+        String[] arr = str.split(",");
+        if (arr.length == 16)
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 4; j++) {
+                    ButtonArray[i][j].setText(arr[k]);
+                    color_change(i, j);
+                    k++;
+                }
+
+
+        //-----------------------------
         myLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -412,6 +439,34 @@ public class  MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        SharedPreferences.Editor prefEditor = settings.edit();
+        prefEditor.putInt(rec, record);
+        prefEditor.putInt(scr, score);
+
+        String str = "";
+
+        for (int i = 0; i < 4; i++)
+            for (int j = 0; j < 4; j++)
+                //list.add(ButtonArray[i][j].getText().toString());
+                if (i == 3 && j == 3)
+                    str = str.concat(ButtonArray[i][j].getText().toString());
+                else
+                    str = str.concat(ButtonArray[i][j].getText().toString() + ",");
+
+        //Toast.makeText(getApplicationContext(), str, Toast.LENGTH_SHORT).show();
+        prefEditor.putString(set, str);
+
+        prefEditor.apply();
+
+        /*outState.putInt(rec, record);
+        outState.putInt(scr, score);*/
+        //Toast.makeText(getApplicationContext(), "Меня потрогали dybp", Toast.LENGTH_SHORT).show();
+        super.onSaveInstanceState(outState);
     }
 }
 
